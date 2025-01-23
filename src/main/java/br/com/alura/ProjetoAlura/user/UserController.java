@@ -1,7 +1,7 @@
 package br.com.alura.ProjetoAlura.user;
 
-import br.com.alura.ProjetoAlura.util.ErrorItemDTO;
-import jakarta.validation.Valid;
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import br.com.alura.ProjetoAlura.util.ErrorItemDTO;
+import jakarta.validation.Valid;
 
 @RestController
 public class UserController {
@@ -23,7 +24,7 @@ public class UserController {
 
     @Transactional
     @PostMapping("/user/newStudent")
-    public ResponseEntity newStudent(@RequestBody @Valid NewStudentUserDTO newStudent) {
+    public ResponseEntity<?> newStudent(@RequestBody @Valid NewStudentUserDTO newStudent) {
         if(userRepository.existsByEmail(newStudent.getEmail())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(new ErrorItemDTO("email", "Email já cadastrado no sistema"));

@@ -1,9 +1,11 @@
 package br.com.alura.ProjetoAlura.course;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.Length;
+import jakarta.validation.constraints.Pattern;
 
 public class NewCourseDTO {
 
@@ -14,6 +16,7 @@ public class NewCourseDTO {
     @NotNull
     @NotBlank
     @Length(min = 4, max = 10)
+    @Pattern(regexp="^[a-zA-Z-]+$", message="Code must be text, unique, without spaces, numbers or special characters")
     private String code;
 
     private String description;
@@ -55,5 +58,9 @@ public class NewCourseDTO {
 
     public void setInstructorEmail(String instructorEmail) {
         this.instructorEmail = instructorEmail;
+    }
+
+    public Course toModel() {
+        return new Course(name, code, instructorEmail, description, Status.ACTIVE, null);
     }
 }

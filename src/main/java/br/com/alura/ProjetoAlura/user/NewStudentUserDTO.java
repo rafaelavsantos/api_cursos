@@ -1,11 +1,11 @@
 package br.com.alura.ProjetoAlura.user;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 import static br.com.alura.ProjetoAlura.user.Role.STUDENT;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class NewStudentUserDTO {
 

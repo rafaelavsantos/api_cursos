@@ -1,6 +1,7 @@
 package br.com.alura.ProjetoAlura.registration;
 
-import jakarta.validation.constraints.Email;
+import br.com.alura.ProjetoAlura.course.Course;
+import br.com.alura.ProjetoAlura.user.User;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -8,29 +9,32 @@ public class NewRegistrationDTO {
 
     @NotBlank
     @NotNull
-    private String courseCode;
+    private Course course;
 
     @NotBlank
     @NotNull
-    @Email
-    private String studentEmail;
+    private User user;
 
     public NewRegistrationDTO() {}
 
-    public String getCourseCode() {
-        return courseCode;
+    public NewRegistrationDTO(User user, Course course) {
+        this.user = user;
+        this.course = course;
     }
 
-    public void setCourseCode(String courseCode) {
-        this.courseCode = courseCode;
+    public Course getCourse() {
+        return course;
     }
 
-    public String getStudentEmail() {
-        return studentEmail;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
-    public void setStudentEmail(String studentEmail) {
-        this.studentEmail = studentEmail;
+    public User getUser() {
+        return user;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
